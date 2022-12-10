@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { search } from "../BooksAPI";
 import Book from "./Book";
+import {Link} from 'react-router-dom';
 
-function Search({ toggleSearch, setBooks,books }) {
+function Search({  setBooks,books }) {
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -17,7 +18,7 @@ function Search({ toggleSearch, setBooks,books }) {
           for(let i = 0 ; i < searchBooks.length; i++){
             searchBooks[i].shelf = "none";
             for(let j = 0; j < books.length; j++){
-              if(searchBooks[i].title === books[j].title){
+              if(searchBooks[i].id === books[j].id){
                 searchBooks[i].shelf = books[j].shelf;
               }
             }
@@ -33,9 +34,9 @@ function Search({ toggleSearch, setBooks,books }) {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a className="close-search" onClick={() => toggleSearch()}>
+        <Link to="/" className="close-search" >
           Close
-        </a>
+        </Link>
         <div className="search-books-input-wrapper">
           <input
             type="text"
