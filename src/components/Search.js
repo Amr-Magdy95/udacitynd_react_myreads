@@ -8,6 +8,7 @@ function Search({  setBooks,books }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    if(searchTerm.length === 0) setResults([]);
     setResults([]);
     const getSearchBooks = async () => {
       let searchBooks = await search(...searchTerm.toLowerCase().split(' '), 20);
@@ -28,7 +29,7 @@ function Search({  setBooks,books }) {
       } catch (err) {}
     };
     getSearchBooks();
-  }, [searchTerm]);
+  }, [searchTerm, books]);
 
   
   return (
@@ -47,10 +48,9 @@ function Search({  setBooks,books }) {
         </div>
       </div>
       <div className="search-books-results">
+          {results.length <=0 && <h2>No search results to show</h2>}
         <ol className="books-grid">
-          {!results.length
-            ? "Loading..."
-            : results.map((book) => <Book key={book.id} {...book} setBooks={setBooks}></Book>)}
+          {results && results.map((book) => <Book key={book.id} {...book} setBooks={setBooks}></Book>)}
         </ol>
       </div>
     </div>

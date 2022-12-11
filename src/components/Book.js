@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import { TiTick } from "react-icons/ti";
-import {getAll, update, get} from '../BooksAPI';
+import { update, get} from '../BooksAPI';
 
 function Book({ imageLinks, title, authors, shelf, id, setBooks }) {
   const selectForm = useRef(null);
@@ -46,7 +45,7 @@ function Book({ imageLinks, title, authors, shelf, id, setBooks }) {
         </div>
         <div className="book-title">{title} </div>
         <div className="book-authors">
-          {authors && authors.map((author) => `${author}, `)}
+          {authors && authors.map((author) => `${author}. `)}
         </div>
       </div>
     </li>
