@@ -38,7 +38,7 @@ function Book({ imageLinks, title, authors, shelf, id, setBooks }) {
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
-                <option value="none">None</option>
+                <option value="noValue">None</option>
               </select>
             </form>
           </div>

@@ -17,7 +17,7 @@ function Search({  setBooks,books }) {
           throw new Error("empty query");
         } else {
           for(let i = 0 ; i < searchBooks.length; i++){
-            searchBooks[i].shelf = "none";
+            searchBooks[i].shelf = "noValue";
             for(let j = 0; j < books.length; j++){
               if(searchBooks[i].id === books[j].id){
                 searchBooks[i].shelf = books[j].shelf;
